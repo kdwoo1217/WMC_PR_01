@@ -124,7 +124,7 @@
    // 210 bytes at a rate of 448 Kb/s
    NS_LOG_INFO ("Create Applications.");
    uint16_t port = 9;   // Discard port (RFC 863)
-   OnOffHelper onoff ("ns3::UdpSocketFactory", 
+   OnOffHelper onoff ("ns3::TcpSocketFactory", 
                       Address (InetSocketAddress (i3i2.GetAddress (0), port)));
    onoff.SetConstantRate (DataRate ("448kb/s"));
    ApplicationContainer apps = onoff.Install (c.Get (0));
@@ -132,7 +132,7 @@
    apps.Stop (Seconds (10.0));
  
    // Create a packet sink to receive these packets
-   PacketSinkHelper sink ("ns3::UdpSocketFactory",
+   PacketSinkHelper sink ("ns3::TcpSocketFactory",
                           Address (InetSocketAddress (Ipv4Address::GetAny (), port)));
    apps = sink.Install (c.Get (3));
    apps.Start (Seconds (1.0));
