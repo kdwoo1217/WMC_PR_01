@@ -106,7 +106,7 @@
    NodeContainer nc_pc4 = NodeContainer ();
 
    for(int i = 0; i < 21; i++) {
-     nc_pc4.Add (c.Get(i+2))
+     nc_pc4.Add (c.Get(i+2));
    }
 
   //  NodeContainer n0n2 = NodeContainer (c.Get (0), c.Get (2));
@@ -171,7 +171,7 @@
    // Create a packet sink to receive these packets
    PacketSinkHelper sink ("ns3::TcpSocketFactory",
                           Address (InetSocketAddress (Ipv4Address::GetAny (), port)));
-   apps = sink.Install (c.Get (0));
+   ApplicationContainer apps = sink.Install (c.Get (0));
    apps.Start (Seconds (1.0));
    apps.Stop (Seconds (10.0));
  
