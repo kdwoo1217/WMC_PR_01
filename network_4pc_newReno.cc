@@ -267,16 +267,16 @@
    uint16_t port = 9;   // Discard port (RFC 863)
 
 
-  //  //4PC_room
-  //  for (int i = 0; i < 20; i++) 
-  //  {
-  //     OnOffHelper onoff ("ns3::TcpSocketFactory", 
-  //                     Address (InetSocketAddress (iic_sugang.GetAddress (0), port)));
-  //     onoff.SetConstantRate (DataRate ("448kb/s"));
-  //     ApplicationContainer apps = onoff.Install (c.Get (i+3));
-  //     apps.Start (Seconds (1.0));
-  //     apps.Stop (Seconds (100.0));
-  //  }
+   //4PC_room
+   for (int i = 0; i < 20; i++) 
+   {
+      OnOffHelper onoff ("ns3::TcpSocketFactory", 
+                      Address (InetSocketAddress (iic_sugang.GetAddress (0), port)));
+      onoff.SetConstantRate (DataRate ("448kb/s"));
+      ApplicationContainer apps = onoff.Install (c.Get (i+3));
+      apps.Start (Seconds (1.0));
+      apps.Stop (Seconds (100.0));
+   }
 
    //PC_room
    for (int i = 29; i < 33; i++) 
