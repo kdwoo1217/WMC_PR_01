@@ -292,17 +292,17 @@
    //Home
    OnOffHelper onoff ("ns3::TcpSocketFactory", 
                       Address (InetSocketAddress (iic_sugang.GetAddress (0), port)));
-      onoff.SetConstantRate (DataRate ("448kb/s"));
-      ApplicationContainer apps = onoff.Install (c.Get (36));
-      apps.Start (Seconds (1.0));
-      apps.Stop (Seconds (10.0));
+   onoff.SetConstantRate (DataRate ("448kb/s"));
+   ApplicationContainer apps = onoff.Install (c.Get (36));
+   apps.Start (Seconds (1.0));
+   apps.Stop (Seconds (10.0));
  
    // Create a packet sink to receive these packets
    PacketSinkHelper sink ("ns3::TcpSocketFactory",
                           Address (InetSocketAddress (Ipv4Address::GetAny (), port)));
-   ApplicationContainer apps = sink.Install (c.Get (2));
-   apps.Start (Seconds (1.0));
-   apps.Stop (Seconds (10.0));
+   ApplicationContainer apps_sink = sink.Install (c.Get (2));
+   apps_sink.Start (Seconds (1.0));
+   apps_sink.Stop (Seconds (10.0));
  
    AsciiTraceHelper ascii;
    p2p.EnableAsciiAll (ascii.CreateFileStream ("cau_4_pc_simulation.tr"));
