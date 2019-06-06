@@ -275,7 +275,7 @@
       onoff.SetConstantRate (DataRate ("448kb/s"));
       ApplicationContainer apps = onoff.Install (c.Get (i+3));
       apps.Start (Seconds (1.0));
-      apps.Stop (Seconds (10.0));
+      apps.Stop (Seconds (100.0));
    }
 
    //PC_room
@@ -286,7 +286,7 @@
       onoff.SetConstantRate (DataRate ("448kb/s"));
       ApplicationContainer apps = onoff.Install (c.Get (i));
       apps.Start (Seconds (1.0));
-      apps.Stop (Seconds (10.0));
+      apps.Stop (Seconds (100.0));
    }
 
    //Home
@@ -295,14 +295,14 @@
    onoff.SetConstantRate (DataRate ("448kb/s"));
    ApplicationContainer apps = onoff.Install (c.Get (36));
    apps.Start (Seconds (1.0));
-   apps.Stop (Seconds (10.0));
+   apps.Stop (Seconds (100.0));
  
    // Create a packet sink to receive these packets
    PacketSinkHelper sink ("ns3::TcpSocketFactory",
                           Address (InetSocketAddress (Ipv4Address::GetAny (), port)));
    ApplicationContainer apps_sink = sink.Install (c.Get (2));
    apps_sink.Start (Seconds (1.0));
-   apps_sink.Stop (Seconds (10.0));
+   apps_sink.Stop (Seconds (100.0));
  
    AsciiTraceHelper ascii;
    p2p.EnableAsciiAll (ascii.CreateFileStream ("cau_4_pc_simulation.tr"));
@@ -316,7 +316,7 @@
      }
  
    NS_LOG_INFO ("Run Simulation.");
-   Simulator::Stop (Seconds (11));
+   Simulator::Stop (Seconds (101));
    Simulator::Run ();
    NS_LOG_INFO ("Done.");
  
