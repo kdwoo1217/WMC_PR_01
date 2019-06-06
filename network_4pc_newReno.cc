@@ -181,10 +181,10 @@
    //univ_base_route_1~4
    p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
    p2p.SetChannelAttribute ("Delay", StringValue ("2ms"));
-   NetDeviceContainer ndc_univ_base_route_1 = p2p.Install (nc_pc_inner_route_1);
-   NetDeviceContainer ndc_univ_base_route_2 = p2p.Install (nc_pc_inner_route_2);
-   NetDeviceContainer ndc_univ_base_route_3 = p2p.Install (nc_pc_inner_route_3);
-   NetDeviceContainer ndc_univ_base_route_4 = p2p.Install (nc_pc_inner_route_4); // must have higher specs.
+   NetDeviceContainer ndc_univ_base_route_1 = p2p.Install (nc_univ_base_route_1);
+   NetDeviceContainer ndc_univ_base_route_2 = p2p.Install (nc_univ_base_route_2);
+   NetDeviceContainer ndc_univ_base_route_3 = p2p.Install (nc_univ_base_route_3);
+   NetDeviceContainer ndc_univ_base_route_4 = p2p.Install (nc_univ_base_route_4); // must have higher specs.
 
    //pc_base_route
    p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
@@ -300,7 +300,7 @@
    // Create a packet sink to receive these packets
    PacketSinkHelper sink ("ns3::TcpSocketFactory",
                           Address (InetSocketAddress (Ipv4Address::GetAny (), port)));
-   ApplicationContainer apps_sink = sink.Install (c.Get (2));
+   ApplicationContainer apps_sink = sink.Install (c.Get (0));
    apps_sink.Start (Seconds (1.0));
    apps_sink.Stop (Seconds (100.0));
  
