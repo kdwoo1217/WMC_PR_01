@@ -1,38 +1,9 @@
-/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
- /*
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License version 2 as
-  * published by the Free Software Foundation;
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  * GNU General Public License for more details.
-  *
-  * You should have received a copy of the GNU General Public License
-  * along with this program; if not, write to the Free Software
-  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-  *
-  */
- 
- //
- // Network topology
- //
- //  n0
- //     \ 5 Mb/s, 2ms
- //      \          1.5Mb/s, 10ms
- //       n2 -------------------------n3
- //      /
- //     / 5 Mb/s, 2ms
- //   n1
- //
- // - all links are point-to-point links with indicated one-way BW/delay
- // - CBR/UDP flows from n0 to n3, and from n3 to n1
- // - FTP/TCP flow from n0 to n3, starting at time 1.2 to time 1.35 sec.
- // - UDP packet size of 210 bytes, with per-packet interval 0.00375 sec.
- //   (i.e., DataRate of 448,000 bps)
- // - DropTail queues 
- // - Tracing of queues and packet receptions to file "simple-global-routing.tr"
+/*
+@Copyrighted by CAUCSE-Team5.2
+@author : 강동원, 공찬형, 금강현, 이동현
+@date : 2019.06.06
+@GNU-Licence
+*/
  
  #include <iostream>
  #include <fstream>
@@ -55,8 +26,6 @@
  int 
  main (int argc, char *argv[])
  {
-   // Users may find it convenient to turn on explicit debugging
-   // for selected modules; the below lines suggest how to do this
  #if 0 
    LogComponentEnable ("SimpleGlobalRoutingExample", LOG_LEVEL_INFO);
  #endif
@@ -64,7 +33,6 @@
    // Set up some default values for the simulation.  Use the 
    Config::SetDefault ("ns3::OnOffApplication::PacketSize", UintegerValue (210));
    Config::SetDefault ("ns3::OnOffApplication::DataRate", StringValue ("448kb/s"));
- 
    Config::SetDefault ("ns3::TcpL4Protocol::SocketType", StringValue ("ns3::TcpNewReno"));
    //DefaultValue::Bind ("DropTailQueue::m_maxPackets", 30);
  
@@ -74,14 +42,8 @@
    bool enableFlowMonitor = false;
    cmd.AddValue ("EnableMonitor", "Enable Flow Monitor", enableFlowMonitor);
    cmd.Parse (argc, argv);
- 
-   // Here, we will explicitly create four nodes.  In more sophisticated
-   // topologies, we could configure a node factory.
-
 
    /*
-
-  NAMES
 
   <HOST>
 
@@ -121,7 +83,6 @@
    home_base_route_3 : c_34 - c_35
    home_base_route_4 : c_35 - c_36
 
-
    */
 
    NS_LOG_INFO ("Create nodes.");
@@ -160,22 +121,22 @@
 
    //sugang
    p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
-   p2p.SetChannelAttribute ("Delay", StringValue ("2ms"));
+   p2p.SetChannelAttribute ("Delay", StringValue ("0.5ms"));
    NetDeviceContainer ndc_sugang = p2p.Install (nc_sugang);
  
    //innerUniv
    p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
-   p2p.SetChannelAttribute ("Delay", StringValue ("2ms"));
+   p2p.SetChannelAttribute ("Delay", StringValue ("0.5ms"));
    NetDeviceContainer ndc_innerUniv = p2p.Install (nc_innerUniv);
  
    //pc4
    csma.SetChannelAttribute ("DataRate", StringValue ("1500kbps"));
-   csma.SetChannelAttribute ("Delay", StringValue ("2ms"));
+   csma.SetChannelAttribute ("Delay", StringValue ("0.5ms"));
    NetDeviceContainer ndc_pc4 = csma.Install (nc_pc4);
 
    //outer gateway
    p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
-   p2p.SetChannelAttribute ("Delay", StringValue ("2ms"));
+   p2p.SetChannelAttribute ("Delay", StringValue ("0.5ms"));
    NetDeviceContainer ndc_outer_gateway = p2p.Install (nc_outer_gateway);
 
    //univ_base_route_1~4
@@ -193,7 +154,7 @@
 
    //pc_inner_route
    p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
-   p2p.SetChannelAttribute ("Delay", StringValue ("2ms"));
+   p2p.SetChannelAttribute ("Delay", StringValue ("0.5ms"));
    NetDeviceContainer ndc_pc_inner_route_1 = p2p.Install (nc_pc_inner_route_1); // must have higher specs.
    NetDeviceContainer ndc_pc_inner_route_2 = p2p.Install (nc_pc_inner_route_2);
    NetDeviceContainer ndc_pc_inner_route_3 = p2p.Install (nc_pc_inner_route_3);
