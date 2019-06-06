@@ -42,6 +42,7 @@
  #include "ns3/core-module.h"
  #include "ns3/network-module.h"
  #include "ns3/internet-module.h"
+ #include "ns3/csma-module.h"
  #include "ns3/point-to-point-module.h"
  #include "ns3/applications-module.h"
  #include "ns3/flow-monitor-helper.h"
@@ -100,9 +101,9 @@
    NS_LOG_INFO ("Create nodes.");
    NodeContainer c;
    c.Create (23);
-   NodeConatainer nc_sugang = NodeConatainer (c.get(0), c.get(1));
-   NodeConatainer nc_innerUniv = NodeConatainer (c.get(1), c.get(2));
-   NodeConatainer nc_pc4 = NodeConatainer (
+   NodeContainer nc_sugang = NodeConatainer (c.get(0), c.get(1));
+   NodeContainer nc_innerUniv = NodeConatainer (c.get(1), c.get(2));
+   NodeContainer nc_pc4 = NodeConatainer (
       c.get(2), c.get(3), c.get(4), c.get(5), c.get(6), c.get(7), c.get(8), c.get(9), c.get(10), 
       c.get(11), c.get(12), c.get(13), c.get(14), c.get(15), c.get(16), c.get(17), c.get(18), c.get(19), c.get(20),
       c.get(21), c.get(22), c.get(23));
