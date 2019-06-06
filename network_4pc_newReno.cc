@@ -126,7 +126,7 @@
 
    NS_LOG_INFO ("Create nodes.");
    NodeContainer c;
-   c.Create (23);
+   c.Create (37);
    NodeContainer nc_sugang = NodeContainer (c.Get (0), c.Get (1));
    NodeContainer nc_innerUniv = NodeContainer (c.Get (1), c.Get (2));
    NodeContainer nc_pc4 = NodeContainer ();
