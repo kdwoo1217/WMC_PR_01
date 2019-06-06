@@ -33,7 +33,7 @@
    // Set up some default values for the simulation.  Use the 
    Config::SetDefault ("ns3::OnOffApplication::PacketSize", UintegerValue (210));
    Config::SetDefault ("ns3::OnOffApplication::DataRate", StringValue ("448kb/s"));
-   Config::SetDefault ("ns3::TcpL4Protocol::SocketType", StringValue ("ns3::TcpNewReno"));
+   //Config::SetDefault ("ns3::TcpL4Protocol::SocketType", StringValue ("ns3::TcpNewReno"));
    //DefaultValue::Bind ("DropTailQueue::m_maxPackets", 30);
  
    // Allow the user to override any of the defaults and the above
