@@ -94,7 +94,7 @@
 
    sugang : c_0 - c_1
    innerUniv : c_1 - c_2
-   pc4 : c_2 ~ c_23
+   pc4 : c_2 ~ c_22
 
    */
 
@@ -108,11 +108,6 @@
    for(int i = 0; i < 21; i++) {
      nc_pc4.Add (c.Get(i+2));
    }
-
-  //  NodeContainer n0n2 = NodeContainer (c.Get (0), c.Get (2));
-  //  NodeContainer n1n2 = NodeContainer (c.Get (1), c.Get (2));
-  //  NodeContainer n3n2 = NodeContainer (c.Get (3), c.Get (2));
-  //  NodeContainer n4n2 = NodeContainer (c.Get (4), c.Get (2));
  
    InternetStackHelper internet;
    internet.Install (c);
@@ -161,7 +156,7 @@
    for (int i = 0; i < 20; i++) 
    {
       OnOffHelper onoff ("ns3::TcpSocketFactory", 
-                      Address (InetSocketAddress (iic_pc4.GetAddress (i), port)));
+                      Address (InetSocketAddress (sugang.GetAddress (0), port)));
       onoff.SetConstantRate (DataRate ("448kb/s"));
       ApplicationContainer apps = onoff.Install (c.Get (i+3));
       apps.Start (Seconds (1.0));
@@ -171,7 +166,7 @@
    // Create a packet sink to receive these packets
    PacketSinkHelper sink ("ns3::TcpSocketFactory",
                           Address (InetSocketAddress (Ipv4Address::GetAny (), port)));
-   ApplicationContainer apps = sink.Install (c.Get (0));
+   ApplicationContainer apps = sink.Install (c.Get (2));
    apps.Start (Seconds (1.0));
    apps.Stop (Seconds (10.0));
  
