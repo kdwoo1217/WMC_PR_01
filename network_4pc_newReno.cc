@@ -229,7 +229,7 @@
 
 
    //4PC_room
-   for (int i = 0; i < 10; i++) 
+   for (int i = 0; i < 1; i++) 
    {
       OnOffHelper onoff ("ns3::TcpSocketFactory", 
                       Address (InetSocketAddress (iic_sugang.GetAddress (0), port)));
