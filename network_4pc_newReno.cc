@@ -130,7 +130,7 @@
    NetDeviceContainer ndc_innerUniv = p2p.Install (nc_innerUniv);
  
    //pc4
-   csma.SetChannelAttribute ("DataRate", StringValue ("1400kbps"));
+   csma.SetChannelAttribute ("DataRate", StringValue ("1500kbps"));
    csma.SetChannelAttribute ("Delay", StringValue ("0.5ms"));
    NetDeviceContainer ndc_pc4 = csma.Install (nc_pc4);
 
