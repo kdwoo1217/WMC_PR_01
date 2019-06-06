@@ -156,7 +156,7 @@
    for (int i = 0; i < 20; i++) 
    {
       OnOffHelper onoff ("ns3::TcpSocketFactory", 
-                      Address (InetSocketAddress (sugang.GetAddress (0), port)));
+                      Address (InetSocketAddress (iic_sugang.GetAddress (0), port)));
       onoff.SetConstantRate (DataRate ("448kb/s"));
       ApplicationContainer apps = onoff.Install (c.Get (i+3));
       apps.Start (Seconds (1.0));
