@@ -101,12 +101,12 @@
    NS_LOG_INFO ("Create nodes.");
    NodeContainer c;
    c.Create (23);
-   NodeContainer nc_sugang = NodeConatainer (c.get(0), c.get(1));
-   NodeContainer nc_innerUniv = NodeConatainer (c.get(1), c.get(2));
+   NodeContainer nc_sugang = NodeConatainer (c.Get (0), c.Get (1));
+   NodeContainer nc_innerUniv = NodeConatainer (c.Get (1), c.Get (2));
    NodeContainer nc_pc4 = NodeConatainer (
-      c.get(2), c.get(3), c.get(4), c.get(5), c.get(6), c.get(7), c.get(8), c.get(9), c.get(10), 
-      c.get(11), c.get(12), c.get(13), c.get(14), c.get(15), c.get(16), c.get(17), c.get(18), c.get(19), c.get(20),
-      c.get(21), c.get(22), c.get(23));
+      c.Get (2), c.Get (3), c.Get (4), c.Get (5), c.Get (6), c.Get (7), c.Get (8), c.Get (9), c.Get (10), 
+      c.Get (11), c.Get (12), c.Get (13), c.Get (14), c.Get (15), c.Get (16), c.Get (17), c.Get (18), c.Get (19), c.Get (20),
+      c.Get (21), c.Get (22), c.Get (23));
 
   //  NodeContainer n0n2 = NodeContainer (c.Get (0), c.Get (2));
   //  NodeContainer n1n2 = NodeContainer (c.Get (1), c.Get (2));
@@ -132,8 +132,8 @@
    NetDeviceContainer ndc_innerUniv = p2p.Install (nc_innerUniv);
  
    //pc4
-   csma.SetChannelAttribute ("DataRate", StringValue("1500kbps"));
-   csma.SetChannelAttribute ("Delay", StringValue("2ms"));
+   csma.SetChannelAttribute ("DataRate", StringValue ("1500kbps"));
+   csma.SetChannelAttribute ("Delay", StringValue ("2ms"));
    NetDeviceContainer ndc_pc4 = csma.Install (nc_pc4);
  
    // Later, we add IP addresses.
@@ -157,7 +157,7 @@
    NS_LOG_INFO ("Create Applications.");
    uint16_t port = 9;   // Discard port (RFC 863)
 
-   for(int i = 0; i < 20; i++) 
+   for (int i = 0; i < 20; i++) 
    {
       OnOffHelper onoff ("ns3::TcpSocketFactory", 
                       Address (InetSocketAddress (iic_pc4.GetAddress (i), port)));
