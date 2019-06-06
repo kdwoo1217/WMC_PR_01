@@ -140,10 +140,10 @@
    NodeContainer nc_pc_inner_route_2 = NodeContainer (c.Get (28), c.Get (30));
    NodeContainer nc_pc_inner_route_3 = NodeContainer (c.Get (28), c.Get (31));
    NodeContainer nc_pc_inner_route_4 = NodeContainer (c.Get (28), c.Get (32));
-   NodeContainer home_base_route_1 = NodeContainer (c.Get (27), c.Get (33));
-   NodeContainer home_base_route_2 = NodeContainer (c.Get (33), c.Get (34));
-   NodeContainer home_base_route_3 = NodeContainer (c.Get (34), c.Get (35));
-   NodeContainer home_base_route_4 = NodeContainer (c.Get (35), c.Get (36));
+   NodeContainer nc_home_base_route_1 = NodeContainer (c.Get (27), c.Get (33));
+   NodeContainer nc_home_base_route_2 = NodeContainer (c.Get (33), c.Get (34));
+   NodeContainer nc_home_base_route_3 = NodeContainer (c.Get (34), c.Get (35));
+   NodeContainer nc_home_base_route_4 = NodeContainer (c.Get (35), c.Get (36));
    
 
    for(int i = 0; i < 21; i++) {
